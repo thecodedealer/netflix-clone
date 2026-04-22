@@ -42,6 +42,7 @@ model Movie {
   publicId    String   @unique // url friendly id
   title       String
   description String
+  thumbnailUrl String?  // Cloudinary authenticated delivery URL
   isTrending   Boolean  @default(false)
   trailerUrl     String?  // YouTube trailer URL for preview
   videoUrl       String?  // Cloudinary authenticated delivery URL

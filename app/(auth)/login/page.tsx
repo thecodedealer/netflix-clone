@@ -1,4 +1,8 @@
 "use client";
+import Background from "@/components/auth/Background";
+import Header from "@/components/auth/Header";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { createClient } from "@/lib/supabase/client";
 import axios from "axios";
 import Link from "next/link";
@@ -8,7 +12,7 @@ import z from "zod";
 
 const schema = z.object({
   email: z.email("Enter a valid email address"),
-  password: z.string().min(6, "Password is required"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
 type FieldErrors = Partial<Record<keyof z.infer<typeof schema>, string>>;
@@ -66,35 +70,49 @@ function Page() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {fieldErrors.password && (
-          <p className="text-red-500 text-xs">{fieldErrors.password}</p>
-        )}
-        <Link
-          href={"/forgot-password"}
-          className="text-white/50 text-xs hover:text-white self-end mt-1"
+    <div className="relative h-screen flex flex-col">
+      <Header />
+      <Background />
+
+      <div className="flex-1 flex items-center justify-center">
+        <form
+          onSubmit={handleSubmit}
+          className="p-8 bg-black/65 rounded-lg flex flex-col gap-4 w-full max-w-md"
         >
-          Forgot password?
-        </Link>
+          <h1 className="mb-4 text-2xl font-bold text-white">Sign In</h1>
+
+          <div className="flex flex-col gap-1">
+            <Input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <Input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {fieldErrors.password && (
+              <p className="text-red-500 text-xs">{fieldErrors.password}</p>
+            )}
+            <Link
+              href={"/forgot-password"}
+              className="text-white/50 text-xs hover:text-white self-end mt-1"
+            >
+              Forgot password?
+            </Link>
+          </div>
+
+          {error && <p className="text-red-500 text-xs">{error}</p>}
+
+          <Button type="submit" variant={"brand-primary"} className="h-12">
+            Login
+          </Button>
+        </form>
       </div>
-
-      {error && <p className="text-red-500 text-xs">{error}</p>}
-
-      <button type="submit">Login</button>
-    </form>
+    </div>
   );
 }
 

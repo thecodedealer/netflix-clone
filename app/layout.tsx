@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import { Inter, Geist } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import ContextProvider from "@/providers/ContextProvider";
+import ModalProvider from "@/providers/ModalProvider";
+import QueryProvider from "@/providers/QueryProvider";
+import Footer from "@/components/Footer";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,8 +25,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("h-full", "antialiased", inter.className, "font-sans", geist.variable)}>
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html
+      lang="en"
+      className={cn(
+        "h-full",
+        "antialiased",
+        inter.className,
+        "font-sans",
+        geist.variable,
+      )}
+    >
+      <ContextProvider>
+        <body className="min-h-full flex flex-col">
+          <QueryProvider>
+            <ModalProvider>
+              <main>{children}</main>
+              <Footer />
+            </ModalProvider>
+          </QueryProvider>
+        </body>
+      </ContextProvider>
     </html>
   );
 }
