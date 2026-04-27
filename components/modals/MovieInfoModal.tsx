@@ -18,9 +18,12 @@ import MaturityBadge from "../movie/MaturityBadge";
 import useFetchMyList from "@/hooks/my-list/useFetchMyList";
 import useAddToMyList from "@/hooks/my-list/useAddToMyList";
 import useRemoveFromMyList from "@/hooks/my-list/useRemoveFromMyList";
+import { useRouter } from "next/navigation";
 
 function MovieInfoModal() {
   const { activeMovie, closeModal } = useGlobalContext();
+
+  const router = useRouter();
 
   const { data: myList = [] } = useFetchMyList();
   const { mutate: addToMyList } = useAddToMyList();
@@ -125,7 +128,13 @@ function MovieInfoModal() {
                 {movie.title}
               </h2>
               <div className="flex items-center gap-2">
-                <button className="btn-play" onClick={() => {}}>
+                <button
+                  className="btn-play"
+                  onClick={() => {
+                    router.push(`/watch/${movie.publicId}`);
+                    closeModal();
+                  }}
+                >
                   <PlayButtonIcon size={22} className="ml-0.5" />
                   Play
                 </button>
