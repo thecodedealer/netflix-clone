@@ -3,6 +3,7 @@ import Background from "@/components/auth/Background";
 import Header from "@/components/auth/Header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { createClient } from "@/lib/supabase/client";
 import axios from "axios";
 import Link from "next/link";
@@ -82,16 +83,26 @@ function Page() {
           <h1 className="mb-4 text-2xl font-bold text-white">Sign In</h1>
 
           <div className="flex flex-col gap-1">
+            <Label htmlFor="email" className="text-white/80 text-sm">
+              Email
+            </Label>
             <Input
+              id="email"
               type="email"
               value={email}
+              placeholder="Enter your email"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="flex flex-col gap-1">
+            <Label htmlFor="password" className="text-white/80 text-sm">
+              Password
+            </Label>
             <Input
+              id="password"
               type="password"
               value={password}
+              placeholder="Enter your password"
               onChange={(e) => setPassword(e.target.value)}
             />
             {fieldErrors.password && (
@@ -108,7 +119,7 @@ function Page() {
           {error && <p className="text-red-500 text-xs">{error}</p>}
 
           <Button type="submit" variant={"brand-primary"} className="h-12">
-            Login
+            {loading ? "Signing in..." : "Sign In"}
           </Button>
         </form>
       </div>
