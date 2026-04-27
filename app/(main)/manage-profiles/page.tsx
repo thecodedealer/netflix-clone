@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import ProfileForm from "../../components/profile/ProfileForm";
 import useFetchProfiles from "@/hooks/profile/useFetchProfiles";
 import { Profile } from "@/types/types";
 import Link from "next/link";
 import Image from "next/image";
 import AddProfileCard from "@/components/profile/AddProfileCard";
 import ProfileCard from "@/components/profile/ProfileCard";
+import ProfileForm from "@/components/profile/ProfileForm";
 
 const MAX_PROFILES = 5;
 

@@ -15,6 +15,14 @@ function Page() {
 
   const router = useRouter();
 
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <span className="loader"></span>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#141414]">
       <div className="px-8 pt-10 pb-7 border-b border-white/5">

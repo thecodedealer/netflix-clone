@@ -131,7 +131,7 @@ function Header() {
                 <DropdownMenuItem
                   key={profile.id}
                   onClick={() => handleProfileSwitch(profile)}
-                  className="flex items-center gap-3 px-3 py-2 rounded-sm cursor-pointer bg-transparent focus:bg-transparent hover:bg-transparent text-white focus:text-white hover:underline"
+                  className="flex items-center gap-3 px-3 py-2 rounded-sm cursor-pointer bg-transparent focus:bg-transparent hover:bg-transparent text-white focus:text-white focus:**:text-white! hover:underline"
                 >
                   <Image
                     src={profile.avatar ?? "/images/netflix--avatar.png"}
@@ -161,7 +161,7 @@ function Header() {
 
             <DropdownMenuItem
               asChild
-              className="flex items-center gap-3 px-3 py-2 rounded-sm cursor-pointer bg-transparent focus:bg-transparent hover:bg-transparent text-white focus:text-white hover:underline"
+              className="flex items-center gap-3 px-3 py-2 rounded-sm cursor-pointer bg-transparent focus:bg-transparent hover:bg-transparent text-white focus:text-white focus:**:text-white! hover:underline"
             >
               <Link href="/manage-profiles">
                 <Settings size={22} className="text-white/60 shrink-0" />
@@ -173,7 +173,7 @@ function Header() {
 
             <DropdownMenuItem
               onClick={handleSignOut}
-              className="flex items-center gap-3 px-3 py-2 rounded-sm cursor-pointer bg-transparent focus:bg-transparent hover:bg-transparent text-white focus:text-white hover:underline"
+              className="flex items-center gap-3 px-3 py-2 rounded-sm cursor-pointer bg-transparent focus:bg-transparent hover:bg-transparent text-white focus:text-white focus:**:text-white! hover:underline"
             >
               <LogOut size={22} className="text-white/60 shrink-0" />
               <span className="text-sm text-white/80">Sign Out</span>

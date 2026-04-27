@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import ContextProvider from "@/providers/ContextProvider";
 import ModalProvider from "@/providers/ModalProvider";
 import QueryProvider from "@/providers/QueryProvider";
-import Footer from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -37,10 +37,10 @@ export default function RootLayout({
     >
       <ContextProvider>
         <body className="min-h-full flex flex-col">
+          <Toaster />
           <QueryProvider>
             <ModalProvider>
               <main>{children}</main>
-              <Footer />
             </ModalProvider>
           </QueryProvider>
         </body>

@@ -190,7 +190,7 @@ function MovieCard({ movie }: Props) {
                 <button className="w-8 h-8 flex items-center justify-center rounded-full bg-white hover:bg-white/80 text-black">
                   <PlayButtonIcon size={20} className="ml-0.5" />
                 </button>
-                <Tooltip>
+                <Tooltip delayDuration={400}>
                   <TooltipTrigger asChild>
                     <button
                       className="w-8 h-8 flex items-center justify-center rounded-full bg-white/5 text-white border border-white/50 hover:border-white"
@@ -205,14 +205,14 @@ function MovieCard({ movie }: Props) {
                   </TooltipTrigger>
                   <TooltipContent
                     side="top"
-                    className="py-2 px-4 bg-white/90 text-black text-base font-medium"
+                    className="py-2 px-4 bg-white text-black text-base font-medium"
                   >
                     {isInMyList ? "Remove from My List" : "Add to My List"}
                   </TooltipContent>
                 </Tooltip>
               </div>
 
-              <Tooltip>
+              <Tooltip delayDuration={400}>
                 <TooltipTrigger asChild>
                   <button
                     className="w-8 h-8 flex items-center justify-center rounded-full bg-white/5 text-white border border-white/50 hover:border-white"
@@ -226,7 +226,7 @@ function MovieCard({ movie }: Props) {
                 </TooltipTrigger>
                 <TooltipContent
                   side="top"
-                  className="py-2 px-4 bg-white/90 text-black text-base font-medium"
+                  className="py-2 px-4 bg-white text-black text-base font-medium"
                 >
                   More Info
                 </TooltipContent>

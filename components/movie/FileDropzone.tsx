@@ -61,7 +61,7 @@ function FileDropzone({
           {progress !== undefined && (
             <div className="h-1.5 w-40 overflow-hidden rounded-full bg-muted">
               <div
-                className="h-full bg-primary transition-all"
+                className="h-full bg-brand-primary transition-all"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -99,7 +99,7 @@ function FileDropzone({
               e.stopPropagation();
               onFileSelect(null);
             }}
-            className="gap-1"
+            className="gap-1 bg-red-500/10 text-red-500/90 border-red-500 hover:bg-red-500/25 hover:text-red-500"
           >
             <X className="h-3 w-3" />
             Remove

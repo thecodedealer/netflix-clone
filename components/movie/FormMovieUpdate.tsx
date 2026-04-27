@@ -25,6 +25,7 @@ import { RATINGS } from "@/lib/constants";
 import { Switch } from "../ui/switch";
 import { Button } from "../ui/button";
 import { getSignedThumbnailUrl } from "@/app/actions/thumbnail";
+import toast from "react-hot-toast";
 
 interface Prop {
   handleSubmit: (data: MovieUpdateData) => void;
@@ -111,7 +112,7 @@ function FormMovieUpdate({ handleSubmit, movie }: Prop) {
   return (
     <div className="max-w-2xl py-6 w-full flex flex-col gap-4">
       <h1 className="text-2xl font-bold mb-6 text-center w-full">
-        Update Movie
+        Update Movie Details
       </h1>
       <form
         className="p-6 rounded-lg shadow-md"
@@ -126,6 +127,8 @@ function FormMovieUpdate({ handleSubmit, movie }: Prop) {
             isTrending,
             releaseYear,
           });
+
+          toast.success("Movie details updated!");
         }}
       >
         <FieldGroup>
@@ -148,6 +151,7 @@ function FormMovieUpdate({ handleSubmit, movie }: Prop) {
               onChange={(e) => setDescription(e.target.value)}
               rows={4}
               required
+              className="w-full border-white/20"
             />
           </Field>
 
@@ -229,18 +233,23 @@ function FormMovieUpdate({ handleSubmit, movie }: Prop) {
           <div className="grid gap-6 sm:grid-cols-2">
             <Field>
               <FieldLabel htmlFor="rating">Rating</FieldLabel>
-              <Select value={rating} onValueChange={setRating} required>
-                <SelectTrigger id="rating" className="w-full">
-                  <SelectValue placeholder="Select rating" />
-                </SelectTrigger>
-                <SelectContent>
-                  {RATINGS.map((r) => (
-                    <SelectItem key={r.value} value={r.value}>
-                      {r.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <div className="flex-1">
+                <Select value={rating} onValueChange={setRating} required>
+                  <SelectTrigger
+                    id="rating"
+                    className="w-full h-full! border-white/20"
+                  >
+                    <SelectValue placeholder="Select rating" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {RATINGS.map((r) => (
+                      <SelectItem key={r.value} value={r.value}>
+                        {r.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             </Field>
 
             <Field>
@@ -263,6 +272,7 @@ function FormMovieUpdate({ handleSubmit, movie }: Prop) {
               id="isFeatured"
               checked={isFeatured}
               onCheckedChange={setIsFeatured}
+              className="data-checked:bg-brand-primary data-unchecked:bg-white/20"
             />
             <FieldContent>
               <FieldLabel htmlFor="isFeatured">Featured Content</FieldLabel>
@@ -277,6 +287,7 @@ function FormMovieUpdate({ handleSubmit, movie }: Prop) {
               id="isTrending"
               checked={isTrending}
               onCheckedChange={setIsTrending}
+              className="data-checked:bg-brand-primary data-unchecked:bg-white/20"
             />
             <FieldContent>
               <FieldLabel htmlFor="isTrending">Trending</FieldLabel>
@@ -286,9 +297,13 @@ function FormMovieUpdate({ handleSubmit, movie }: Prop) {
             </FieldContent>
           </Field>
 
-          <Button type="submit" size="lg" className="w-full">
+          <Button
+            type="submit"
+            variant={"brand-primary"}
+            className="ml-auto px-4 h-10 w-fit justify-end"
+          >
             <Upload className="mr-2 h-4 w-4" />
-            Update Movie
+            Update Details
           </Button>
         </FieldGroup>
       </form>

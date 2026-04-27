@@ -167,7 +167,7 @@ function VideoControls({ title, thumbnails }: Props) {
                 </Slider.Preview>
               </Slider.Root>
             </div>
-            <p className="w-16 flex justify-between items-center">
+            <p className="w-14 flex items-center justify-end">
               {formatTime(duration - currentTime)}
             </p>
           </div>
