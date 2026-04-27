@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 const useDetectOutsideClick = (
-  ref: React.RefObject<HTMLElement>,
+  ref: React.RefObject<HTMLElement | null>,
   callback: () => void,
 ) => {
   useEffect(() => {

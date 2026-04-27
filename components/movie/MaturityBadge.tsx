@@ -1,8 +1,7 @@
 import { ALL_AUDIENCES_CONFIG, RATING_CONFIG } from "@/lib/constants";
-import React from "react";
 
 interface Props {
-  rating?: string;
+  rating?: string | null;
   size?: "xs" | "sm" | "md";
 }
 
