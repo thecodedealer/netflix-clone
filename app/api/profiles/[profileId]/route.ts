@@ -15,7 +15,7 @@ export const getAuthUser = async () => {
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { profileId: string } },
+  { params }: { params: Promise<{ profileId: string }> },
 ) {
   try {
     const { profileId } = await params;
@@ -53,7 +53,7 @@ export async function PATCH(
 // delete profile
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { profileId: string } },
+  { params }: { params: Promise<{ profileId: string }> },
 ) {
   try {
     const { profileId } = await params;

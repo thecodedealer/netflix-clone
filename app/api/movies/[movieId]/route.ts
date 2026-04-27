@@ -24,7 +24,7 @@ const getAdminUser = async () => {
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { movieId: string } },
+  { params }: { params: Promise<{ movieId: string }> },
 ) {
   try {
     const { movieId } = await params;
@@ -50,7 +50,7 @@ export async function GET(
 // Update movie details (Admin only)
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { movieId: string } },
+  { params }: { params: Promise<{ movieId: string }> },
 ) {
   try {
     const { movieId } = await params;
@@ -94,7 +94,7 @@ export async function PATCH(
 // delete movie
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { movieId: string } },
+  { params }: { params: Promise<{ movieId: string }> },
 ) {
   try {
     const { movieId } = await params;
